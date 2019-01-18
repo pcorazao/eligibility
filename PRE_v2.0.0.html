@@ -1,0 +1,2354 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Patient Responsibility Estimate (PRE)</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all.js"></script>
+  </head>
+
+  <body class="index" data-languages="[&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;,&quot;java&quot;,&quot;go&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo.png" class="logo" alt="Logo" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="ruby">Ruby</a>
+              <a href="#" data-language-name="python">Python</a>
+              <a href="#" data-language-name="javascript">JavaScript</a>
+              <a href="#" data-language-name="java">Java</a>
+              <a href="#" data-language-name="go">Go</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#patient-responsibility-estimate-pre-" class="toc-h1 toc-link" data-title="Patient Responsibility Estimate (PRE) v2.0">Patient Responsibility Estimate (PRE) v2.0</a>
+          </li>
+          <li>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+          </li>
+          <li>
+            <a href="#patient-responsibility-estimate-pre--default" class="toc-h1 toc-link" data-title="Default">Default</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#patient-estimate" class="toc-h2 toc-link" data-title="Patient Estimate">Patient Estimate</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#schemas" class="toc-h1 toc-link" data-title="Schemas">Schemas</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#tocScustomerpreference" class="toc-h2 toc-link" data-title="customerPreference">customerPreference</a>
+                  </li>
+                  <li>
+                    <a href="#tocSlineadjustment" class="toc-h2 toc-link" data-title="lineAdjustment">lineAdjustment</a>
+                  </li>
+                  <li>
+                    <a href="#tocSbenefit" class="toc-h2 toc-link" data-title="benefit">benefit</a>
+                  </li>
+                  <li>
+                    <a href="#tocSmemberaccount" class="toc-h2 toc-link" data-title="memberAccount">memberAccount</a>
+                  </li>
+                  <li>
+                    <a href="#tocSmember" class="toc-h2 toc-link" data-title="member">member</a>
+                  </li>
+                  <li>
+                    <a href="#tocSpayer" class="toc-h2 toc-link" data-title="payer">payer</a>
+                  </li>
+                  <li>
+                    <a href="#tocSpayerbenefit" class="toc-h2 toc-link" data-title="payerBenefit">payerBenefit</a>
+                  </li>
+                  <li>
+                    <a href="#tocSprovider" class="toc-h2 toc-link" data-title="provider">provider</a>
+                  </li>
+                  <li>
+                    <a href="#tocSproviderestimateandbenefit" class="toc-h2 toc-link" data-title="providerEstimateAndBenefit">providerEstimateAndBenefit</a>
+                  </li>
+                  <li>
+                    <a href="#tocSproviderservice" class="toc-h2 toc-link" data-title="providerService">providerService</a>
+                  </li>
+                  <li>
+                    <a href="#tocSprovidersummary" class="toc-h2 toc-link" data-title="providerSummary">providerSummary</a>
+                  </li>
+                  <li>
+                    <a href="#tocSestimaterequest" class="toc-h2 toc-link" data-title="estimateRequest">estimateRequest</a>
+                  </li>
+                  <li>
+                    <a href="#tocSpayersummary" class="toc-h2 toc-link" data-title="payerSummary">payerSummary</a>
+                  </li>
+                  <li>
+                    <a href="#tocSestimateresponse" class="toc-h2 toc-link" data-title="estimateResponse">estimateResponse</a>
+                  </li>
+                  <li>
+                    <a href="#tocSservicelinedetail" class="toc-h2 toc-link" data-title="serviceLineDetail">serviceLineDetail</a>
+                  </li>
+                  <li>
+                    <a href="#tocSservice" class="toc-h2 toc-link" data-title="service">service</a>
+                  </li>
+                  <li>
+                    <a href="#tocSsummary" class="toc-h2 toc-link" data-title="summary">summary</a>
+                  </li>
+                  <li>
+                    <a href="#tocStotalestimateandbenefit" class="toc-h2 toc-link" data-title="totalEstimateAndBenefit">totalEstimateAndBenefit</a>
+                  </li>
+                  <li>
+                    <a href="#tocStransactionidentifierresponse" class="toc-h2 toc-link" data-title="transactionIdentifierResponse">transactionIdentifierResponse</a>
+                  </li>
+                  <li>
+                    <a href="#tocSprovidernetworkstatus" class="toc-h2 toc-link" data-title="providerNetworkStatus">providerNetworkStatus</a>
+                  </li>
+                  <li>
+                    <a href="#tocStransactionidentifier" class="toc-h2 toc-link" data-title="transactionIdentifier">transactionIdentifier</a>
+                  </li>
+                  <li>
+                    <a href="#tocSerrorresponse" class="toc-h2 toc-link" data-title="errorResponse">errorResponse</a>
+                  </li>
+                  <li>
+                    <a href="#tocSfielderror" class="toc-h2 toc-link" data-title="fieldError">fieldError</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id="patient-responsibility-estimate-pre-">Patient Responsibility Estimate (PRE) v2.0</h1>
+
+<blockquote>
+<p>Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.</p>
+</blockquote>
+
+<p>Try our Postman Collection 
+Try our Postman Collection
+<a href="https://www.getpostman.com/collections/26eb9f2f956f98b5855c"><img alt="Run in Postman" src="https://run.pstmn.io/button.png"></a>
+ <a href="https://sandbox.developer.changehealthcare.com/apis/rcm/patientEstimate">https://sandbox.developer.changehealthcare.com/apis/rcm/patientEstimate</a></p>
+<h1 id='authentication'>Authentication</h1>
+<ul>
+<li>HTTP Authentication, scheme: basic </li>
+</ul>
+
+<h1 id="patient-responsibility-estimate-pre--default">Default</h1>
+<h2 id='patient-estimate'>Patient Estimate</h2>
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+<span class="nb">require</span> <span class="s1">'json'</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/vnd.changehealthcare.pre-v2.0+json'</span><span class="p">,</span>
+  <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'multipart/form-data'</span><span class="p">,</span>
+  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer Your-Access-Token'</span>
+<span class="p">}</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'https://sandbox.developer.changehealthcare.com/apis/rcm/patientEstimate/'</span><span class="p">,</span>
+  <span class="ss">params: </span><span class="p">{</span>
+  <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
+
+<span class="nb">p</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/vnd.changehealthcare.pre-v2.0+json'</span><span class="p">,</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'multipart/form-data'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer Your-Access-Token'</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://sandbox.developer.changehealthcare.com/apis/rcm/patientEstimate/'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+
+<span class="p">},</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Content-Type'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/vnd.changehealthcare.pre-v2.0+json'</span><span class="p">,</span>
+  <span class="s1">'Content-Type'</span><span class="p">:</span><span class="s1">'multipart/form-data'</span><span class="p">,</span>
+  <span class="s1">'Authorization'</span><span class="p">:</span><span class="s1">'Bearer Your-Access-Token'</span>
+
+<span class="p">};</span>
+
+<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://sandbox.developer.changehealthcare.com/apis/rcm/patientEstimate/'</span><span class="p">,</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'post'</span><span class="p">,</span>
+
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span><span class="p">,</span>
+  <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+
+</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://sandbox.developer.changehealthcare.com/apis/rcm/patientEstimate/"</span><span class="o">);</span>
+<span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
+<span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"POST"</span><span class="o">);</span>
+<span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
+<span class="n">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedReader</span><span class="o">(</span>
+    <span class="k">new</span> <span class="nf">InputStreamReader</span><span class="o">(</span><span class="n">con</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
+<span class="n">String</span> <span class="n">inputLine</span><span class="o">;</span>
+<span class="n">StringBuffer</span> <span class="n">response</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuffer</span><span class="o">();</span>
+<span class="k">while</span> <span class="o">((</span><span class="n">inputLine</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">response</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">inputLine</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+
+</code></pre><pre class="highlight go tab-go"><code><span class="k">package</span><span class="x"> </span><span class="n">main</span><span class="x">
+
+</span><span class="k">import</span><span class="x"> </span><span class="p">(</span><span class="x">
+       </span><span class="s">"bytes"</span><span class="x">
+       </span><span class="s">"net/http"</span><span class="x">
+</span><span class="p">)</span><span class="x">
+
+</span><span class="k">func</span><span class="x"> </span><span class="n">main</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+
+    </span><span class="n">headers</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kt">string</span><span class="p">{</span><span class="x">
+        </span><span class="s">"Content-Type"</span><span class="o">:</span><span class="x"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"application/json"</span><span class="p">},</span><span class="x">
+        </span><span class="s">"Accept"</span><span class="o">:</span><span class="x"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"application/json"</span><span class="p">},</span><span class="x">
+        </span><span class="s">"Accept"</span><span class="o">:</span><span class="x"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"application/vnd.changehealthcare.pre-v2.0+json"</span><span class="p">},</span><span class="x">
+        </span><span class="s">"Content-Type"</span><span class="o">:</span><span class="x"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"multipart/form-data"</span><span class="p">},</span><span class="x">
+        </span><span class="s">"Authorization"</span><span class="o">:</span><span class="x"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"Bearer Your-Access-Token"</span><span class="p">},</span><span class="x">
+
+    </span><span class="p">}</span><span class="x">
+
+    </span><span class="n">data</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span><span class="x">
+    </span><span class="n">req</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span><span class="x"> </span><span class="s">"https://sandbox.developer.changehealthcare.com/apis/rcm/patientEstimate/"</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
+    </span><span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">headers</span><span class="x">
+
+    </span><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span><span class="x">
+    </span><span class="n">resp</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">Do</span><span class="p">(</span><span class="n">req</span><span class="p">)</span><span class="x">
+    </span><span class="c">// ...</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span></code></pre>
+<p><code>POST /</code></p>
+
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"payerBenefits"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"benefit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"annualDeductible"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"annualOutOfPocketMaximum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2500"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"annualOutOfPocketMaximumRemaining"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"copay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"coinsurancePercentage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"deductibleRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"payer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"tradingPartnerServiceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abcde"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payerSequence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"primary"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"planType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PPO"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"serviceTypeCodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"30"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"providerServices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"provider"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"middleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"organizationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe Hospital"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"placeOfService"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"npi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567893"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"taxonomyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2086S0122X"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lineOfBusiness"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Professional"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"taxId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"postalCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37122"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"services"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"procedureCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"73130"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"procedureModifierCode1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"procedureModifierCode2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LT"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"procedureModifierCode3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RT"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"procedureModifierCode4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"unit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"perUnitOverrideAllowedAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"perUnitChargeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"transactionIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"customerTransactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1235-665-656546465-56434"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"customerPreference"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"rateSourceProcessingOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Standard"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"serviceFlag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Manual"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"providerNetworkStatus"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"In"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="patient-estimate-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Accept</td>
+<td>header</td>
+<td>string</td>
+<td>false</td>
+<td>application/vnd.changehealthcare.pre-v2.0+json</td>
+</tr>
+<tr>
+<td>Content-Type</td>
+<td>header</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Authorization</td>
+<td>header</td>
+<td>string</td>
+<td>false</td>
+<td>Authorization header</td>
+</tr>
+<tr>
+<td>body</td>
+<td>body</td>
+<td><a href="#schemaestimaterequest">estimateRequest</a></td>
+<td>true</td>
+<td>none</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Accept</td>
+<td>application/vnd.changehealthcare.pre-v2.0+json</td>
+</tr>
+<tr>
+<td>Content-Type</td>
+<td>multipart/form-data</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"customerPreference"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"rateSourceProcessingOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Standard"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"serviceFlag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Manual"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"providerEstimateAndBenefit"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"provider"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"middleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"organizationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe Hospital"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"placeOfService"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"npi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567893"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"taxonomyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2086S0122X"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lineOfBusiness"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Professional"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"taxId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"postalCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37122"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"providerSummary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"totalChargeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"totalEstimateAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"serviceLineDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"estimateAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"lineAdjustments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"appliedCoinsuranceAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"appliedDeductible"</span><span class="p">:</span><span class="w"> </span><span class="mf">7.88</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"payer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"tradingPartnerServiceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abcde"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"payerSequence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"primary"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"planType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PPO"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"serviceTypeCodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                  </span><span class="s2">"30"</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">"payerDueAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"perUnitPayerRate"</span><span class="p">:</span><span class="w"> </span><span class="mf">7.88</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"rateSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment trends for health plan and procedure among the provider's regional peers"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"rateSourceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"totalPayerRate"</span><span class="p">:</span><span class="w"> </span><span class="mf">7.88</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"totalChargeAdjustment"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"appliedCopay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"service"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"procedureCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"73130"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"procedureModifierCode1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"procedureModifierCode2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LT"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"procedureModifierCode3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RT"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"procedureModifierCode4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"perUnitOverrideAllowedAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"perUnitChargeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"totalEstimateAndBenefit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"legalDisclaimer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The message </span><span class="se">\"</span><span class="s2">This is estimate and not a guarantee of payment. Estimate is based on current member benefits and does not consider medical necessity, limitations or exclusions</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"payerSummary"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"appliedCoinsuranceAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"appliedDeductible"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"benefitAppliedNarrative"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$100.00 was applied from patient's deductible, coinsurance was not used in the estimate, user must validate with Health Plan or patient about the coinsurance involved. $0.00 was applied as Copayment."</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"tradingPartnerServiceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abcde"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"payerSequence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"primary"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"planType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PPO"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"serviceTypeCodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"30"</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"payerDueAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payerDueAmountNarrative"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Primary payer is expected to pay $243.72 of the adjusted charges."</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"appliedCopay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"summary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"estimateAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"estimateAmountNarrative"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The patient's estimated payment amount is $120.00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"totalChargeAdjustment"</span><span class="p">:</span><span class="w"> </span><span class="mf">484.03</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"totalChargeAdjustmentsNarrative"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The patient saved $484.03 in total charges.The contract between health plans and healthcare providers helps reduce total charges and save money for patient's"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"totalChargeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"totalChargeAmountNarrative"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The total charges submitted by the provider for your visit was $500.00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"estimateNotice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"alertNotification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"transactionIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"customerTransactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1235-665-656546465-56434"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2a6ed492-02e3-46b6-aed9-8b53e84767a3"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="patient-estimate-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>Success</td>
+<td><a href="#schemaestimateresponse">estimateResponse</a></td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>Bad request</td>
+<td><a href="#schemaerrorresponse">errorResponse</a></td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+This operation requires authentication
+</aside>
+<h1 id='schemas'>Schemas</h1>
+<h2 id="tocScustomerpreference">customerPreference</h2>
+
+<p><a id="schemacustomerpreference"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"rateSourceProcessingOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Standard"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"serviceFlag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Manual"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>rateSourceProcessingOrder</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>An Optional value that selects the data sources used in patien estimation. Default selection is Standard which runs through all sources.</td>
+</tr>
+<tr>
+<td>serviceFlag</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>271 - Clients run eligibility  and supply 271 with the PRE request. Manual- Clients run eligibility and supply benefits in the request. Selfpay- Clients identify the patient as a self pay</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-2'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>rateSourceProcessingOrder</td>
+<td>Standard</td>
+</tr>
+<tr>
+<td>rateSourceProcessingOrder</td>
+<td>No_Peer</td>
+</tr>
+<tr>
+<td>rateSourceProcessingOrder</td>
+<td>Era_Exact_Match</td>
+</tr>
+<tr>
+<td>rateSourceProcessingOrder</td>
+<td>Era_Close_Match</td>
+</tr>
+<tr>
+<td>serviceFlag</td>
+<td>271</td>
+</tr>
+<tr>
+<td>serviceFlag</td>
+<td>Manual</td>
+</tr>
+<tr>
+<td>serviceFlag</td>
+<td>Selfpay</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSlineadjustment">lineAdjustment</h2>
+
+<p><a id="schemalineadjustment"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"appliedCoinsuranceAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"appliedDeductible"</span><span class="p">:</span><span class="w"> </span><span class="mf">7.88</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"payer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"tradingPartnerServiceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abcde"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"payerSequence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"primary"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"planType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PPO"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"serviceTypeCodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"30"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"payerDueAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"perUnitPayerRate"</span><span class="p">:</span><span class="w"> </span><span class="mf">7.88</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"rateSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment trends for health plan and procedure among the provider's regional peers"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"rateSourceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"totalPayerRate"</span><span class="p">:</span><span class="w"> </span><span class="mf">7.88</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"totalChargeAdjustment"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"appliedCopay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-2'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>appliedCoinsuranceAmount</td>
+<td>number</td>
+<td>true</td>
+<td>none</td>
+<td>Coinsurance applied to estimate each procedure</td>
+</tr>
+<tr>
+<td>appliedDeductible</td>
+<td>number</td>
+<td>true</td>
+<td>none</td>
+<td>Deductible applied to estimate each procedure</td>
+</tr>
+<tr>
+<td>payer</td>
+<td><a href="#schemapayer">payer</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>payerDueAmount</td>
+<td>number</td>
+<td>true</td>
+<td>none</td>
+<td>Estimate amount due from a payer for each procedure</td>
+</tr>
+<tr>
+<td>perUnitPayerRate</td>
+<td>number</td>
+<td>true</td>
+<td>none</td>
+<td>The allowed amount used to calculate the estimate for a procedure for a single unit/quantity</td>
+</tr>
+<tr>
+<td>rateSource</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>A description of the source used to generate the allowed amount</td>
+</tr>
+<tr>
+<td>rateSourceId</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>A unique id used for each of the many sources that can be used to generate an allowed amount.  08 Suggested rate for self-pay. Provider and patient to negotiate price/discount ( Used in Self Pay) 03 Medicare rates in your region 01 Payment trends between the health plan and provider 09 Payment trends between the health plan and provider without an exact modifier match 10 Payment trends for health plan and procedure among the provider&#39;s regional peers 06 Medicare rates in your region as a baseline with X% added as a proxy for commercial rates 07 Statistically-modeled rate based on similar payment history for this procedure</td>
+</tr>
+<tr>
+<td>totalPayerRate</td>
+<td>number</td>
+<td>true</td>
+<td>none</td>
+<td>Per unit payer rate total number of units received in the input</td>
+</tr>
+<tr>
+<td>totalChargeAdjustment</td>
+<td>number</td>
+<td>false</td>
+<td>none</td>
+<td>Charge Amount - Allowed Amount</td>
+</tr>
+<tr>
+<td>appliedCopay</td>
+<td>number</td>
+<td>false</td>
+<td>none</td>
+<td>Copay Amount applied to Service</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSbenefit">benefit</h2>
+
+<p><a id="schemabenefit"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"annualDeductible"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"annualOutOfPocketMaximum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2500"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"annualOutOfPocketMaximumRemaining"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"copay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"coinsurancePercentage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"deductibleRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<ol>
+<li>The benefits section is meant to be used when the user wants to supply benefits by manually entering them with service flag (customerPreference/serviceFlag) set to &quot;Manual&quot;.The benefits in this section will be used only when the service flag is set to &quot;Manual&quot;</li>
+<li>If service flag is 271 , the client needs to supply a 271 file with the JSON request. </li>
+<li>The benefits are not required to be supplied and will be ignored in the estimation when the service flag is Self Pay. </li>
+</ol>
+
+<p>When requesting systems wants PRE to use the manually supplied benefits (FLAG set to MANUAL), follow the below steps:
+1. If members coinsurance is 20%, send 20 and not 80.
+2. Supply at least one of the  two OOP Max or OOP Remaining, preferably both but atleast OOP Remaining.
+3. Both annual deductible and deductible remaining are required fields</p>
+<h3 id='properties-3'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>annualDeductible</td>
+<td>number</td>
+<td>true</td>
+<td>none</td>
+<td>Mandatory when service flag is &quot;Manual&quot;</td>
+</tr>
+<tr>
+<td>annualOutOfPocketMaximum</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Either OOPM or OOPR is required when service flag is &quot;Manual&quot;</td>
+</tr>
+<tr>
+<td>annualOutOfPocketMaximumRemaining</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Either OOPM or OOPR is required when service flag is &quot;Manual&quot;</td>
+</tr>
+<tr>
+<td>copay</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Not mandatory but Recommended when service flag is &quot;Manual&quot;</td>
+</tr>
+<tr>
+<td>coinsurancePercentage</td>
+<td>number</td>
+<td>false</td>
+<td>none</td>
+<td>Not mandatory but Recommended when service flag is &quot;Manual&quot;</td>
+</tr>
+<tr>
+<td>deductibleRemaining</td>
+<td>number</td>
+<td>true</td>
+<td>none</td>
+<td>Mandatory when service flag is &quot;Manual&quot;</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSmemberaccount">memberAccount</h2>
+
+<p><a id="schemamemberaccount"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"memberId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"relationshipCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>Not used in API 2.0. Data need not be supplied.</p>
+<h3 id='properties-4'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>memberId</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>relationshipCode</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSmember">member</h2>
+
+<p><a id="schemamember"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"dateOfBirth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"middleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>Not used in API 2.0. Data need not be supplied.</p>
+<h3 id='properties-5'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>dateOfBirth</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>firstName</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>lastName</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>middleName</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSpayer">payer</h2>
+
+<p><a id="schemapayer"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"tradingPartnerServiceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abcde"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"payerSequence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"primary"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"planType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PPO"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"serviceTypeCodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"30"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-6'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>tradingPartnerServiceId</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>Supply Change Healthcare&#39;s ERA payer Ids. This list is available on Change Healthcare&#39;s website.  https://access.emdeon.com/PayerLists/</td>
+</tr>
+<tr>
+<td>payerSequence</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Required when the number of payers supplied is &gt;1 i.e. patient is known to be enrolled with more than 1 insurer. In case of a single payer, default will be assumed to be primary</td>
+</tr>
+<tr>
+<td>planType</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>Claim Filing Indicator</td>
+</tr>
+<tr>
+<td>serviceTypeCodes</td>
+<td>[string]</td>
+<td>false</td>
+<td>none</td>
+<td>Multiple service type codes can be passed in the array when serviceFlag is 271 and client has supplied a 271 with the input request. The service type codes passed in this field are used to extract benefits from the 271. If service type codes are not supplied, the application uses its in built logic to scan and decide the service type codes to be used. The code/s supplied here will be used only when the service flag is &quot;271&quot; and a 271 file is attached with the request.</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-3'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>payerSequence</td>
+<td>primary</td>
+</tr>
+<tr>
+<td>payerSequence</td>
+<td>secondary</td>
+</tr>
+<tr>
+<td>payerSequence</td>
+<td>tertiary</td>
+</tr>
+<tr>
+<td>planType</td>
+<td>PPO</td>
+</tr>
+<tr>
+<td>planType</td>
+<td>HMO</td>
+</tr>
+<tr>
+<td>planType</td>
+<td>EPO</td>
+</tr>
+<tr>
+<td>planType</td>
+<td>POS</td>
+</tr>
+<tr>
+<td>planType</td>
+<td>FFS</td>
+</tr>
+<tr>
+<td>planType</td>
+<td>Medicare Part B</td>
+</tr>
+<tr>
+<td>planType</td>
+<td>Medicaid</td>
+</tr>
+<tr>
+<td>planType</td>
+<td>Dental Maintenance Organization</td>
+</tr>
+<tr>
+<td>planType</td>
+<td>Veterans Affairs Plan</td>
+</tr>
+<tr>
+<td>planType</td>
+<td>Workers Compensation</td>
+</tr>
+<tr>
+<td>planType</td>
+<td>Other</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSpayerbenefit">payerBenefit</h2>
+
+<p><a id="schemapayerbenefit"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"benefit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"annualDeductible"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"annualOutOfPocketMaximum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2500"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"annualOutOfPocketMaximumRemaining"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"copay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"coinsurancePercentage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"deductibleRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"payer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"tradingPartnerServiceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abcde"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"payerSequence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"primary"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"planType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PPO"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"serviceTypeCodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"30"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>payerBenefit section contains data that was received in the input:
+payerBenefit/benefit contatins the patient&#39;s benefits received in the input when serviceFlag is manual or extracted by the application from 271 when service flag is 271.
+payerBenefit/memberAccount contains the member Id and relationship code received in the input
+payerBenefit/payer contatins the payer id, plan type and payer sequence (primary, secondary or tertiary) recevied in the input.</p>
+<h3 id='properties-7'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>benefit</td>
+<td><a href="#schemabenefit">benefit</a></td>
+<td>true</td>
+<td>none</td>
+<td>1. The benefits section is meant to be used when the user wants to supply benefits by manually entering them with service flag (customerPreference/serviceFlag) set to &quot;Manual&quot;.The benefits in this section will be used only when the service flag is set to &quot;Manual&quot; 2. If service flag is 271 , the client needs to supply a 271 file with the JSON request.  3. The benefits are not required to be supplied and will be ignored in the estimation when the service flag is Self Pay.   When requesting systems wants PRE to use the manually supplied benefits (FLAG set to MANUAL), follow the below steps: 1. If members coinsurance is 20%, send 20 and not 80. 2. Supply at least one of the  two OOP Max or OOP Remaining, preferably both but atleast OOP Remaining. 3. Both annual deductible and deductible remaining are required fields</td>
+</tr>
+<tr>
+<td>payer</td>
+<td><a href="#schemapayer">payer</a></td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSprovider">provider</h2>
+
+<p><a id="schemaprovider"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"middleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"organizationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe Hospital"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"placeOfService"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"npi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567893"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taxonomyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2086S0122X"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lineOfBusiness"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Professional"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taxId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"postalCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37122"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-8'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>firstName</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>A provider/physician&#39;s first name.</td>
+</tr>
+<tr>
+<td>lastName</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>A provider/physician&#39;s last name</td>
+</tr>
+<tr>
+<td>middleName</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>A provider/physician&#39;s middle name</td>
+</tr>
+<tr>
+<td>organizationName</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Name of provider&#39;s practice/hospital/facility.</td>
+</tr>
+<tr>
+<td>placeOfService</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>A 2 digit code used when billing a claim.  1. In professional setting it is identified as a Place of Service code as published by CMS. Top 5 often used are 11- Office, 20-Urgent Care Facility, 22-Outpatient Hospital,32:Nursing Facility,49-Independent Clinic, 81: Independent Laboratory. Refer the complete list-  http://www.cms.gov/Medicare/Medicare-Fee-for-Service-Payment/PhysicianFeeSched/Downloads/Website-POS-database.pdf 2. In Hospital setting, it is the 2 digit facility code</td>
+</tr>
+<tr>
+<td>npi</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>Provider&#39;s Billing NPI or Rendering NPI</td>
+</tr>
+<tr>
+<td>taxonomyCode</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>If not provided, the application product will retrieve it by looking up the codes published by  NPPES and use the Primary taxonomy code of the provider.  Refer CMS link for valid list of taxonomy codes to be supplied https://www.cms.gov/Medicare/Provider-Enrollment-and-Certification/MedicareProviderSupEnroll/Taxonomy.html</td>
+</tr>
+<tr>
+<td>lineOfBusiness</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>One of the two values Professional or Facility depending on the provider type. If a provider bills claim in CMS 1500, then use Professional. If billing on UB 04, use Facility</td>
+</tr>
+<tr>
+<td>taxId</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>Provider billing tax id</td>
+</tr>
+<tr>
+<td>postalCode</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>5 or 9 digit zip (9 digit in the format XXXXX-YYYY) of the  zip code that provider uses to bill the claims</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-4'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>lineOfBusiness</td>
+<td>Professional</td>
+</tr>
+<tr>
+<td>lineOfBusiness</td>
+<td>Facility</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSproviderestimateandbenefit">providerEstimateAndBenefit</h2>
+
+<p><a id="schemaproviderestimateandbenefit"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"provider"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"middleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"organizationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe Hospital"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"placeOfService"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"npi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567893"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"taxonomyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2086S0122X"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lineOfBusiness"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Professional"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"taxId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postalCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37122"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"providerSummary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"totalChargeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalEstimateAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"serviceLineDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"estimateAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lineAdjustments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"appliedCoinsuranceAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"appliedDeductible"</span><span class="p">:</span><span class="w"> </span><span class="mf">7.88</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"payer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"tradingPartnerServiceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abcde"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"payerSequence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"primary"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"planType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PPO"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"serviceTypeCodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="s2">"30"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"payerDueAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"perUnitPayerRate"</span><span class="p">:</span><span class="w"> </span><span class="mf">7.88</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"rateSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment trends for health plan and procedure among the provider's regional peers"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"rateSourceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"totalPayerRate"</span><span class="p">:</span><span class="w"> </span><span class="mf">7.88</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"totalChargeAdjustment"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"appliedCopay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"service"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"procedureCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"73130"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"procedureModifierCode1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"procedureModifierCode2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"procedureModifierCode3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"procedureModifierCode4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"unit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"perUnitOverrideAllowedAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"perUnitChargeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>providerEstimateAndBenefit contains details about a provider, the summary of estimates due for each provider, the estimate due from each payer to a provider, and the estimate calcualted for each procedure. In comparison to totalEstimateAndBenefit which is the Net estimate due from a patient for all services from all providers, providerEstimateAndBenefit is a break up at each provider&gt;payer&gt; procedure level.</p>
+<h3 id='properties-9'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>provider</td>
+<td><a href="#schemaprovider">provider</a></td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>providerSummary</td>
+<td><a href="#schemaprovidersummary">providerSummary</a></td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>serviceLineDetails</td>
+<td>[<a href="#schemaservicelinedetail">serviceLineDetail</a>]</td>
+<td>true</td>
+<td>none</td>
+<td>Estimate break down at each procedure code level</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSproviderservice">providerService</h2>
+
+<p><a id="schemaproviderservice"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"provider"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"middleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"organizationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe Hospital"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"placeOfService"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"npi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567893"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"taxonomyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2086S0122X"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lineOfBusiness"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Professional"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"taxId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postalCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37122"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"services"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"procedureCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"73130"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"procedureModifierCode1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"procedureModifierCode2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"procedureModifierCode3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"procedureModifierCode4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"unit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"perUnitOverrideAllowedAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"perUnitChargeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-10'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>provider</td>
+<td><a href="#schemaprovider">provider</a></td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>services</td>
+<td>[<a href="#schemaservice">service</a>]</td>
+<td>true</td>
+<td>none</td>
+<td>Multiple attributes about the services provided such as procedure code, procedure code modifier</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSprovidersummary">providerSummary</h2>
+
+<p><a id="schemaprovidersummary"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"totalChargeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"totalEstimateAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-11'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>totalChargeAmount</td>
+<td>number</td>
+<td>true</td>
+<td>none</td>
+<td>Sum of total charges submitted by a provider</td>
+</tr>
+<tr>
+<td>totalEstimateAmount</td>
+<td>number(float)</td>
+<td>true</td>
+<td>none</td>
+<td>Sum of total patient estimate due to a provider for the service provided</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSestimaterequest">estimateRequest</h2>
+
+<p><a id="schemaestimaterequest"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"payerBenefits"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"benefit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"annualDeductible"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"annualOutOfPocketMaximum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2500"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"annualOutOfPocketMaximumRemaining"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"copay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"coinsurancePercentage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"deductibleRemaining"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"payer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"tradingPartnerServiceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abcde"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payerSequence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"primary"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"planType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PPO"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"serviceTypeCodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"30"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"providerServices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"provider"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"middleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"organizationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe Hospital"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"placeOfService"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"npi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567893"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"taxonomyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2086S0122X"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lineOfBusiness"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Professional"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"taxId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"postalCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37122"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"services"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"procedureCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"73130"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"procedureModifierCode1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"procedureModifierCode2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LT"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"procedureModifierCode3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RT"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"procedureModifierCode4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"unit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"perUnitOverrideAllowedAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"perUnitChargeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"transactionIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"customerTransactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1235-665-656546465-56434"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"customerPreference"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"rateSourceProcessingOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Standard"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"serviceFlag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Manual"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"providerNetworkStatus"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"In"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-12'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>payerBenefits</td>
+<td>[<a href="#schemapayerbenefit">payerBenefit</a>]</td>
+<td>false</td>
+<td>none</td>
+<td>[payerBenefit section contains data that was received in the input: payerBenefit/benefit contatins the patient&#39;s benefits received in the input when serviceFlag is manual or extracted by the application from 271 when service flag is 271. payerBenefit/memberAccount contains the member Id and relationship code received in the input payerBenefit/payer contatins the payer id, plan type and payer sequence (primary, secondary or tertiary) recevied in the input.]</td>
+</tr>
+<tr>
+<td>providerServices</td>
+<td>[<a href="#schemaproviderservice">providerService</a>]</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>transactionIdentifier</td>
+<td><a href="#schematransactionidentifier">transactionIdentifier</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>customerPreference</td>
+<td><a href="#schemacustomerpreference">customerPreference</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>providerNetworkStatus</td>
+<td><a href="#schemaprovidernetworkstatus">providerNetworkStatus</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSpayersummary">payerSummary</h2>
+
+<p><a id="schemapayersummary"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"appliedCoinsuranceAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"appliedDeductible"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"benefitAppliedNarrative"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$100.00 was applied from patient's deductible, coinsurance was not used in the estimate, user must validate with Health Plan or patient about the coinsurance involved. $0.00 was applied as Copayment."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"payer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"tradingPartnerServiceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abcde"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"payerSequence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"primary"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"planType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PPO"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"serviceTypeCodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"30"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"payerDueAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"payerDueAmountNarrative"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Primary payer is expected to pay $243.72 of the adjusted charges."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"appliedCopay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-13'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>appliedCoinsuranceAmount</td>
+<td>number</td>
+<td>true</td>
+<td>none</td>
+<td>Coinsurance amount used to come up with the estimate</td>
+</tr>
+<tr>
+<td>appliedDeductible</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>Deductible amount used to come up with the estimate</td>
+</tr>
+<tr>
+<td>benefitAppliedNarrative</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>A description of all the benefits applied to come up with the total patient estimate for all services</td>
+</tr>
+<tr>
+<td>payer</td>
+<td><a href="#schemapayer">payer</a></td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>payerDueAmount</td>
+<td>number</td>
+<td>true</td>
+<td>none</td>
+<td>Portion of the payment estimated to be due from the payer after applying the estimated patients benefit&#39;s</td>
+</tr>
+<tr>
+<td>payerDueAmountNarrative</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>A description of the estimated amount due from a payer</td>
+</tr>
+<tr>
+<td>appliedCopay</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>Co payment amount used to come up with the estimate</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSestimateresponse">estimateResponse</h2>
+
+<p><a id="schemaestimateresponse"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"customerPreference"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"rateSourceProcessingOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Standard"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"serviceFlag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Manual"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"providerEstimateAndBenefit"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"provider"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"middleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"organizationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe Hospital"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"placeOfService"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"npi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567893"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"taxonomyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2086S0122X"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lineOfBusiness"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Professional"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"taxId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"postalCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37122"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"providerSummary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"totalChargeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"totalEstimateAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"serviceLineDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"estimateAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"lineAdjustments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"appliedCoinsuranceAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"appliedDeductible"</span><span class="p">:</span><span class="w"> </span><span class="mf">7.88</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"payer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"tradingPartnerServiceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abcde"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"payerSequence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"primary"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"planType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PPO"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"serviceTypeCodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                  </span><span class="s2">"30"</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">"payerDueAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"perUnitPayerRate"</span><span class="p">:</span><span class="w"> </span><span class="mf">7.88</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"rateSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment trends for health plan and procedure among the provider's regional peers"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"rateSourceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"totalPayerRate"</span><span class="p">:</span><span class="w"> </span><span class="mf">7.88</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"totalChargeAdjustment"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"appliedCopay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"service"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"procedureCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"73130"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"procedureModifierCode1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"procedureModifierCode2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LT"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"procedureModifierCode3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RT"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"procedureModifierCode4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"perUnitOverrideAllowedAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"perUnitChargeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"totalEstimateAndBenefit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"legalDisclaimer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The message </span><span class="se">\"</span><span class="s2">This is estimate and not a guarantee of payment. Estimate is based on current member benefits and does not consider medical necessity, limitations or exclusions</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"payerSummary"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"appliedCoinsuranceAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"appliedDeductible"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"benefitAppliedNarrative"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$100.00 was applied from patient's deductible, coinsurance was not used in the estimate, user must validate with Health Plan or patient about the coinsurance involved. $0.00 was applied as Copayment."</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"tradingPartnerServiceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abcde"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"payerSequence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"primary"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"planType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PPO"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"serviceTypeCodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"30"</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"payerDueAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payerDueAmountNarrative"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Primary payer is expected to pay $243.72 of the adjusted charges."</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"appliedCopay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"summary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"estimateAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"estimateAmountNarrative"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The patient's estimated payment amount is $120.00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"totalChargeAdjustment"</span><span class="p">:</span><span class="w"> </span><span class="mf">484.03</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"totalChargeAdjustmentsNarrative"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The patient saved $484.03 in total charges.The contract between health plans and healthcare providers helps reduce total charges and save money for patient's"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"totalChargeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"totalChargeAmountNarrative"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The total charges submitted by the provider for your visit was $500.00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"estimateNotice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"alertNotification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"transactionIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"customerTransactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1235-665-656546465-56434"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2a6ed492-02e3-46b6-aed9-8b53e84767a3"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-14'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>customerPreference</td>
+<td><a href="#schemacustomerpreference">customerPreference</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>providerEstimateAndBenefit</td>
+<td>[<a href="#schemaproviderestimateandbenefit">providerEstimateAndBenefit</a>]</td>
+<td>false</td>
+<td>none</td>
+<td>[providerEstimateAndBenefit contains details about a provider, the summary of estimates due for each provider, the estimate due from each payer to a provider, and the estimate calcualted for each procedure. In comparison to totalEstimateAndBenefit which is the Net estimate due from a patient for all services from all providers, providerEstimateAndBenefit is a break up at each provider&gt;payer&gt; procedure level.  ]</td>
+</tr>
+<tr>
+<td>totalEstimateAndBenefit</td>
+<td><a href="#schematotalestimateandbenefit">totalEstimateAndBenefit</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>transactionIdentifier</td>
+<td><a href="#schematransactionidentifierresponse">transactionIdentifierResponse</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSservicelinedetail">serviceLineDetail</h2>
+
+<p><a id="schemaservicelinedetail"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"estimateAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lineAdjustments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"appliedCoinsuranceAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"appliedDeductible"</span><span class="p">:</span><span class="w"> </span><span class="mf">7.88</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"payer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"tradingPartnerServiceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abcde"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payerSequence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"primary"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"planType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PPO"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"serviceTypeCodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"30"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"payerDueAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"perUnitPayerRate"</span><span class="p">:</span><span class="w"> </span><span class="mf">7.88</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rateSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment trends for health plan and procedure among the provider's regional peers"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rateSourceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"totalPayerRate"</span><span class="p">:</span><span class="w"> </span><span class="mf">7.88</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"totalChargeAdjustment"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"appliedCopay"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"service"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"procedureCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"73130"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"procedureModifierCode1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"procedureModifierCode2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"procedureModifierCode3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"procedureModifierCode4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"unit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"perUnitOverrideAllowedAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"perUnitChargeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-15'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>estimateAmount</td>
+<td>number</td>
+<td>true</td>
+<td>none</td>
+<td>Patient estimate due for each service provided</td>
+</tr>
+<tr>
+<td>lineAdjustments</td>
+<td>[<a href="#schemalineadjustment">lineAdjustment</a>]</td>
+<td>true</td>
+<td>none</td>
+<td>Benefits used to estimate each procedure and how the allowed was generated</td>
+</tr>
+<tr>
+<td>service</td>
+<td><a href="#schemaservice">service</a></td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSservice">service</h2>
+
+<p><a id="schemaservice"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"procedureCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"73130"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"procedureModifierCode1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"procedureModifierCode2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LT"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"procedureModifierCode3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RT"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"procedureModifierCode4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"unit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"perUnitOverrideAllowedAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"perUnitChargeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-16'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>procedureCode</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>5 character HCPCS or CPT code. More than one procedure code can be supplied but at least one procedure code is required to estimate</td>
+</tr>
+<tr>
+<td>procedureModifierCode1</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>A 2 character modifier code</td>
+</tr>
+<tr>
+<td>procedureModifierCode2</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>A 2 character modifier code</td>
+</tr>
+<tr>
+<td>procedureModifierCode3</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>A 2 character modifier code</td>
+</tr>
+<tr>
+<td>procedureModifierCode4</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>A 2 character modifier code</td>
+</tr>
+<tr>
+<td>unit</td>
+<td>number</td>
+<td>false</td>
+<td>none</td>
+<td># units/quantity to be estimated. PRE application will assume unit 1 when no value is supplied. For Anesthesia codes: Convert minutes to units that is a multiple of 15.  45 minutes is 3 Units</td>
+</tr>
+<tr>
+<td>perUnitOverrideAllowedAmount</td>
+<td>number</td>
+<td>false</td>
+<td>none</td>
+<td>If a client wants to provide the payer contracted/allowed amount that should be used in the estimate instead of the allowed amount generated by the PRE application</td>
+</tr>
+<tr>
+<td>perUnitChargeAmount</td>
+<td>number</td>
+<td>false</td>
+<td>none</td>
+<td>The amount provider is likely to bill a payer/insurer for the assigned procedure/service per unit. If the charge amount is less than the allowed amount generated by the application, charge amount is used in the estimation instead of the allowed amount.</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSsummary">summary</h2>
+
+<p><a id="schemasummary"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"estimateAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"estimateAmountNarrative"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The patient's estimated payment amount is $120.00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"totalChargeAdjustment"</span><span class="p">:</span><span class="w"> </span><span class="mf">484.03</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"totalChargeAdjustmentsNarrative"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The patient saved $484.03 in total charges.The contract between health plans and healthcare providers helps reduce total charges and save money for patient's"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"totalChargeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"totalChargeAmountNarrative"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The total charges submitted by the provider for your visit was $500.00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"estimateNotice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-17'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>estimateAmount</td>
+<td>number</td>
+<td>true</td>
+<td>none</td>
+<td>Patient&#39;s estimate amount</td>
+</tr>
+<tr>
+<td>estimateAmountNarrative</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>Patient&#39;s estimate amount in a narrative form/text string that can be presented in a bill</td>
+</tr>
+<tr>
+<td>totalChargeAdjustment</td>
+<td>number</td>
+<td>true</td>
+<td>none</td>
+<td>Difference between total charges and total allowed amount if charges are higher than allowed amount.  If charges are not passed or passed but lower than allowed amount the adjustment is 0.0</td>
+</tr>
+<tr>
+<td>totalChargeAdjustmentsNarrative</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>Difference between total charges and total allowed amount if charges are higher than allowed amount.  If charges are not passed or passed but lower than allowed amount the adjustment is 0.0</td>
+</tr>
+<tr>
+<td>totalChargeAmount</td>
+<td>number</td>
+<td>true</td>
+<td>none</td>
+<td>Total sum of charges submitted of all procedures received in the input. If not submitted then 0.0</td>
+</tr>
+<tr>
+<td>totalChargeAmountNarrative</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>A description of total charges submitted in the input</td>
+</tr>
+<tr>
+<td>estimateNotice</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Notice about estimate</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocStotalestimateandbenefit">totalEstimateAndBenefit</h2>
+
+<p><a id="schematotalestimateandbenefit"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"legalDisclaimer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The message </span><span class="se">\"</span><span class="s2">This is estimate and not a guarantee of payment. Estimate is based on current member benefits and does not consider medical necessity, limitations or exclusions</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"payerSummary"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"appliedCoinsuranceAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"appliedDeductible"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"benefitAppliedNarrative"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$100.00 was applied from patient's deductible, coinsurance was not used in the estimate, user must validate with Health Plan or patient about the coinsurance involved. $0.00 was applied as Copayment."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"payer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"tradingPartnerServiceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abcde"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payerSequence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"primary"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"planType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PPO"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"serviceTypeCodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"30"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"payerDueAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"payerDueAmountNarrative"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Primary payer is expected to pay $243.72 of the adjusted charges."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"appliedCopay"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"summary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"estimateAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"estimateAmountNarrative"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The patient's estimated payment amount is $120.00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalChargeAdjustment"</span><span class="p">:</span><span class="w"> </span><span class="mf">484.03</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalChargeAdjustmentsNarrative"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The patient saved $484.03 in total charges.The contract between health plans and healthcare providers helps reduce total charges and save money for patient's"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalChargeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalChargeAmountNarrative"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The total charges submitted by the provider for your visit was $500.00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"estimateNotice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"alertNotification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-18'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>legalDisclaimer</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>payerSummary</td>
+<td>[<a href="#schemapayersummary">payerSummary</a>]</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>summary</td>
+<td><a href="#schemasummary">summary</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>alertNotification</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Used to communicate an important message about the estimate such as &quot; Insufficient patient benefits in payer&#39;s eligibility response for the service type code requested by the user, the estimate in this response is calculated using general plan level benefits code 30&quot;</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocStransactionidentifierresponse">transactionIdentifierResponse</h2>
+
+<p><a id="schematransactionidentifierresponse"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"customerTransactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1235-665-656546465-56434"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2a6ed492-02e3-46b6-aed9-8b53e84767a3"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-19'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>customerTransactionId</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>The transaction Id assigned by the client&#39;s application in the API input request. Customers can use this unique Id with Change Healthcare&#39;s customer support for general inquiries and troubleshooting</td>
+</tr>
+<tr>
+<td>transactionId</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>A unique transaction id assigned to each transaction by the PRE Product. Customers can use this unique Id with Change Healthcare&#39;s customer support for general inquiries and troubleshooting</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSprovidernetworkstatus">providerNetworkStatus</h2>
+
+<p><a id="schemaprovidernetworkstatus"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"In"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-20'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>network</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Is the provider in/out of the insurer/payer&#39;s network. It can have one of the two values:“In” Or “Out”. Application will assume In network if value is not supplied.</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocStransactionidentifier">transactionIdentifier</h2>
+
+<p><a id="schematransactionidentifier"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"customerTransactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1235-665-656546465-56434"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-21'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>customerTransactionId</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Transaction Identifier. It can be used to track transaction using customer identifier! Pass through element.</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSerrorresponse">errorResponse</h2>
+
+<p><a id="schemaerrorresponse"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INVALID_MISSING_INPUT_DATA"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The length of procedure code should be 5 characters."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"transactionIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"customerTransactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1235-665-656546465-56434"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2a6ed492-02e3-46b6-aed9-8b53e84767a3"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"procedureCode"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INVALID_LENGTH"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The length of procedure code should be 5 characters"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9921"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$.providerServices[0].services[0]"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"followupAction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-22'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Error code</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Error description</td>
+</tr>
+<tr>
+<td>transactionIdentifier</td>
+<td><a href="#schematransactionidentifierresponse">transactionIdentifierResponse</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>errors</td>
+<td>[<a href="#schemafielderror">fieldError</a>]</td>
+<td>false</td>
+<td>none</td>
+<td>Error detail</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocSfielderror">fieldError</h2>
+
+<p><a id="schemafielderror"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"procedureCode"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INVALID_LENGTH"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The length of procedure code should be 5 characters"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9921"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$.providerServices[0].services[0]"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"followupAction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-23'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>field</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Field which has error</td>
+</tr>
+<tr>
+<td>code</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Error code</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Error description</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Input value</td>
+</tr>
+<tr>
+<td>location</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Where is the field located in input</td>
+</tr>
+<tr>
+<td>followupAction</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>What can be done to resolve the error</td>
+</tr>
+</tbody></table>
+test test test
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="ruby">Ruby</a>
+                <a href="#" data-language-name="python">Python</a>
+                <a href="#" data-language-name="javascript">JavaScript</a>
+                <a href="#" data-language-name="java">Java</a>
+                <a href="#" data-language-name="go">Go</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
